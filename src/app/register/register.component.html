@@ -1,0 +1,27 @@
+<form [formGroup]="registerForm" novalidate (submit)="onSubmitRegister(registerForm)">
+
+<p>Register:</p>
+
+<input type="radio" name="type" value="baby"> Baby
+<input type="radio" name="type" value="sitter"> Sitter<br>
+
+<label>Firstname:
+  <input formControlName="firstname">
+</label>
+<label>Lastname:
+  <input formControlName="lastname">
+</label>
+<div *ngIf="type === 'baby'">
+<label>Postalcode:
+    <input formControlName="postalcode">
+</label>
+</div>
+  
+  <!-- *ngIf="loginForm.controls.username.errors?.required && loginForm.controls.username.touched" -->
+
+  <button type="submit" [disabled]="registerForm.invalid">Login!</button>
+
+  <p>Form value: {{ registerForm.value | json }}</p>
+  <p>Form status: {{ registerForm.status | json }}</p>
+
+</form>
